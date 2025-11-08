@@ -78,7 +78,7 @@ gff_numt <- segments %>%
          phase, 
          attributes)
 
-# Добавляем track line для IGV
+## track line for IGV
 track_line <- "track name=\"NUMTs\" description=\"NUMT pseudogenes\" visibility=2 type=gff3 useNameForDisplay=on"
 
 file_conn <- file("numts_simple.gff3")
@@ -86,7 +86,7 @@ writeLines(track_line,
            file_conn)
 close(file_conn)
 
-# Записываем данные
+## write file
 write.table(gff_numt, 
             "numts_simple.gff3",
             sep="\t", 
@@ -94,4 +94,5 @@ write.table(gff_numt,
             row.names=FALSE,
             col.names=FALSE,
             append=TRUE)
+
 
