@@ -2,13 +2,13 @@
 library(stringr)
 library(Biostrings)
 
-# читаємо fasta
+## read fasta
 fasta <- readDNAStringSet("sattelites_on_3_chr.fasta")
 
-# заголовки
+## headers
 headers <- names(fasta)
 
-# парсимо
+## parsing
 seqid <- str_extract(headers,
                      "^[^:]+")
 coords <- str_extract(headers,
@@ -21,7 +21,7 @@ label <- str_trim(str_replace(headers,
                               "^[^ ]+ ",
                               ""))
 
-# формуємо GFF3-рядки
+## GFF3
 gff <- data.frame(
   seqid,
   source = "Manual",
@@ -37,7 +37,7 @@ gff <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# пишемо у файл
+## write file
 cat(
   'track name="satellite DRU-Sat-1" description="Daboia russelii-like satellite DRU-Sat-1 sequence" visibility=2 type=gff3 useNameForDisplay=on\n',
   "##gff-version 3\n",
@@ -53,6 +53,7 @@ write.table(
   col.names = FALSE,
   append = TRUE
 )
+
 
 
 
