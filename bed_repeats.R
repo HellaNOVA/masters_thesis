@@ -1,6 +1,6 @@
 ## Конвертація gff3 у bed для IGV
 ## install.packages("dplyr")   
-## якщо ще не встановлено
+
 library(dplyr)
 library(stringr)
 getwd()
@@ -42,9 +42,10 @@ bed <- gff %>%
   select(chrom, start, end, name) %>%
   mutate(start = start - 1)   # 0-based start для BED
 
-# файл
+## файл
 write.table(bed, "repeats.bed", 
             sep="\t", 
             quote = FALSE, 
             row.names = FALSE, 
             col.names = FALSE)
+
